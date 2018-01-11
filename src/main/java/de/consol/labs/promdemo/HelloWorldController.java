@@ -24,10 +24,10 @@ public class HelloWorldController {
     @RequestMapping(path = "/hello-world")
     public @ResponseBody String sayHello() {
         promRequestsTotal.inc();
-        return "hello, world";
+        return "Hello, world! from a Java SpringBootApp with prometheus metrics.";
     }
 
-    @RequestMapping(path = "/prometheus")
+    @RequestMapping(path = "/metrics")
     public void metrics(Writer responseWriter) throws IOException {
         TextFormat.write004(responseWriter, CollectorRegistry.defaultRegistry.metricFamilySamples());
         responseWriter.close();
